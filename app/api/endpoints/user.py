@@ -1,8 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 
 from app.api.models.user import UserCreate, UserFromDB
-from fake_db.user_db import get_user_manager, UsersManager
-
+from fake_db.user_db import UsersManager, get_user_manager
 
 user_router = APIRouter(
     prefix="/users",
@@ -14,7 +13,6 @@ user_router = APIRouter(
 async def create_user(user_data: UserCreate,
                       user_manager: UsersManager = Depends(get_user_manager),
                       ):
-
 
     if user_manager.check_unique_email(user_data):
         new_user = user_manager.create_new_user(user_data)

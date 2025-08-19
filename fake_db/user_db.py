@@ -6,10 +6,8 @@ class UsersManager:
         self.ids_counter: int = 0
         self.users: list[UserFromDB] = []
 
-
     def check_unique_email(self, user_data: UserCreate) -> bool:
-        return not bool(*filter(lambda x: x.email == user_data.email , self.users))
-
+        return not bool(*filter(lambda x: x.email == user_data.email, self.users))
 
     def create_new_user(self, user_data: UserCreate) -> UserFromDB:
         self.ids_counter += 1
@@ -22,9 +20,8 @@ class UsersManager:
         self.users.append(new_user)
         return new_user
 
-
     def find_user(self, user_id) -> UserFromDB | None:
-        found_user = tuple(filter(lambda x: x.id == user_id , self.users))
+        found_user = tuple(filter(lambda x: x.id == user_id, self.users))
         if found_user:
             return found_user[0]
         else:

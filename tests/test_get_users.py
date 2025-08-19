@@ -1,5 +1,6 @@
 import requests
 
+
 def get_users():
     base_url = "http://127.0.0.1:8155"
     end_point = "/users"

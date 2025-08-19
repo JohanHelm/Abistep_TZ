@@ -6,7 +6,6 @@ class TransferManager:
         self.ids_counter: int = 0
         self.transfers: list[TransferFromDB] = []
 
-
     def create_transfer(self, transfer_data: TransferCreate) -> TransferFromDB:
         self.ids_counter += 1
         new_transfer = TransferFromDB(
@@ -19,8 +18,8 @@ class TransferManager:
         return new_transfer
 
 
-
 transfer_manager = TransferManager()
+
 
 def get_transfer_manager():
     return transfer_manager
