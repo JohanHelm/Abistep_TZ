@@ -1,14 +1,4 @@
-# from dataclasses import dataclass
-
 from app.api.models.transfer import TransferCreate, TransferFromDB
-
-
-# @dataclass
-# class Transfer:
-#     id: int
-#     from_user_id: int
-#     to_user_id: int
-#     amount: float
 
 
 class TransferManager:
