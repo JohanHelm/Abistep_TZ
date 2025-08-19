@@ -1,29 +1,19 @@
-from dataclasses import dataclass
-
-from app.api.models.user import UserCreate
-
-
-@dataclass
-class User:
-    id: int
-    name: str
-    email: str
-    balance: int | float
+from app.api.models.user import UserCreate, UserFromDB
 
 
 class UsersManager:
     def __init__(self):
         self.ids_counter: int = 0
-        self.users: list[User] = []
+        self.users: list[UserFromDB] = []
 
 
     def check_unique_email(self, user_data: UserCreate) -> bool:
         return not bool(*filter(lambda x: x.email == user_data.email , self.users))
 
 
-    def create_new_user(self, user_data: UserCreate) -> User:
+    def create_new_user(self, user_data: UserCreate) -> UserFromDB:
         self.ids_counter += 1
-        new_user = User(
+        new_user = UserFromDB(
             id=self.ids_counter,
             name=user_data.name,
             email=user_data.email,
@@ -33,7 +23,7 @@ class UsersManager:
         return new_user
 
 
-    def find_user(self, user_id) -> User | None:
+    def find_user(self, user_id) -> UserFromDB | None:
         found_user = tuple(filter(lambda x: x.id == user_id , self.users))
         if found_user:
             return found_user[0]
