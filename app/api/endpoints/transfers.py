@@ -38,6 +38,8 @@ async def create_transfer(transfer_data: TransferCreate,
                                    f"sufficient funds to complete the transaction")
 
     new_transfer = transfer_manager.create_transfer(transfer_data)
+    receiver.balance += float(transfer_data.amount)
+    sender.balance -= float(transfer_data.amount)
 
     return new_transfer
 

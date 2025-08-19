@@ -9,3 +9,5 @@ create_user({"name": "user22", "email": "some22@mail.org", })
 get_users()
 
 create_transfer({"from_user_id": "1", "to_user_id": "2", "amount": "10",})
+
+get_users()
